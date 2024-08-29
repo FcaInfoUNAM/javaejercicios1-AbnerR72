@@ -9,7 +9,7 @@ public class Colecciones {
     ArrayList<String> cars ;
     String[] bikes;
     Set<String> bicicles;
-    HashMap<Integer, String> transport;
+    public HashMap<Integer, String> transport;
 
     public Colecciones(){
         this.cars = new ArrayList<String>();
@@ -39,9 +39,32 @@ public class Colecciones {
     }
 
     public HashMap<Integer, String>  obtenerHash(){
-        int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count =1;
-        //this.transport.forEach((key, value) -> System.out.println(key + " " + value)); //imprimir para pruebas
-        return this.transport;
+        HashSet<String> uniqueElements = new HashSet<>();
+
+        for (String car : cars) {
+            if (car != null && !car.isEmpty()) {
+                uniqueElements.add(car);
+            }
+        }
+
+        for (String bike : bikes) {
+            if (bike != null && !bike.isEmpty()) {
+                uniqueElements.add(bike);
+            }
+        }
+
+        for (String bicicle : bicicles) {
+            if (bicicle != null && !bicicle.isEmpty()) {
+                uniqueElements.add(bicicle);
+            }
+        }
+        
+        int count = 1;
+        for (String element : uniqueElements) {
+            transport.put(count++, element);
+        }
+
+        return transport;
     }
+    
 }
